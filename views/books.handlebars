@@ -1,0 +1,18 @@
+<a class="back" href="/">Voltar</a> 
+<div class="books-container">
+    <h1>Lista de Livros Lidos</h1>
+    {{#each books}}
+        <div>
+            <span class="bold">
+                {{this.book_name}} - {{this.author}} - {{this.total_pages}} páginas
+            </span> 
+
+            <button id="option2"><a href="/book/edit/{{this.id}}">Editar</a></button>
+           
+            <form action="/book/remove/{{this.id}}" method="POST">
+                <button  id="option3" type="submit">Excluir</button>
+            </form>
+            <hr>
+        </div>
+    {{/each}}
+</div>
