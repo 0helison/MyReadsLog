@@ -17,28 +17,19 @@ app.get('/', function (req, res) {
   res.send('Hello World')
 })
 
-app.get('/register', function (req, res) {
+app.get('/vetclinic', function (req, res) {
     res.render('register')
 })
 
-app.post('/register/book/insertbook', (req, res) => {
+app.post('/vetclinic/tutor', (req, res) => {
 
-    const book_name = req.body.book_name
-    const author = req.body.author
-    const total_pages = req.body.total_pages
+    const dadosDoReq = req.body
     
-    const sql = `INSERT INTO books (??, ??, ??) VALUES (?, ?, ?)`
-    const data = ['book_name', 'total_pages', 'author', book_name, total_pages, author]
+    await TutorModel.create(dadosDoReq)
 
-    pool.query(sql, data, function(err) {
-        if (err) {
-            console.log(err)
-            return
-        }
-
-        res.redirect('/books')
-    })
 })
+
+console.log("----------------------------------------------------------")
 
 app.get('/books', (req, res) => {
 
