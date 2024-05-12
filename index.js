@@ -1,5 +1,5 @@
 const express = require('express')
-const { engine } = require('express-handlebars');
+
 const pool = require('./db/conn')
 
 const app = express()
@@ -12,14 +12,9 @@ app.use(
 
 app.use(express.json())
 
-app.engine('handlebars', engine());
-app.set('view engine', 'handlebars');
-app.set('views', './views');
-
-app.use(express.static('public'))
 
 app.get('/', function (req, res) {
-  res.render('home')
+  res.send('Hello World')
 })
 
 app.get('/register', function (req, res) {
